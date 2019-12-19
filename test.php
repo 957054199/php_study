@@ -1,4 +1,12 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My first PHP page</h1>
+
 <?php
-$a='hello world';
-echo $a
+echo "Hello World!";
 ?>
+
+</body>
+</html>
