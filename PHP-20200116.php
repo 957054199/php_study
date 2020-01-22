@@ -18,6 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else{
         $name = test_input($_POST["name"]);
+        if (!preg_match("/^[a-zA-Z ]*$/",$name)){
+            $nameErr = "只允许字母和空格";
+        }
     }
 
     if (empty($_POST["email"])){
@@ -25,12 +28,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     else{
         $email = test_input($_POST["email"]);
+        if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email)) {
+            $emailErr = "非法邮箱格式";
+        }
     }
     if (empty($_POST["website"])){
         $website = "";
     }
     else{
         $website = test_input($_POST["website"]);
+        if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www.)[-a-z0-9+&#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)){
+            $websiteErr = "非法的URL的地址";
+        }
     }
     if (empty($_POST["comment"])){
         $comment = "";
